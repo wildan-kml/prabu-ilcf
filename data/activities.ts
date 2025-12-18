@@ -3,6 +3,8 @@ export type ActivityDay = {
   title: string;
   date: string;
   location: string;
+  image?: string;
+  imageAlt?: string;
   focus: string;
   keyActivities: string[];
   description?: string;
@@ -13,7 +15,9 @@ export const activities: ActivityDay[] = [
     dayLabel: "Hari 1",
     title: "The Journey of Resilience",
     date: "Minggu, 19 April 2026",
-    location: "Bandung → Jakarta → Singapura → Tokyo",
+    location: "Bandung -> Jakarta -> Singapura -> Tokyo",
+    image: "/images/bandara-changi.jpeg",
+    imageAlt: "Perjalanan Bandung ke Tokyo",
     focus: "Adaptasi, kekompakan tim, dan studi banding singkat.",
     keyActivities: [
       "Eksplorasi singkat tata kota dan sistem transportasi publik Singapura (Changi Airport & Merlion Park).",
@@ -25,10 +29,12 @@ export const activities: ActivityDay[] = [
     title: "Diplomatic & Leadership Insight",
     date: "Senin, 20 April 2026",
     location: "Kedutaan Besar Republik Indonesia (KBRI) Tokyo, Jepang",
+    image: "/images/kbri-tokyo.jpg",
+    imageAlt: "Gedung KBRI Tokyo",
     focus: "Wawasan kebijakan luar negeri dan kepemimpinan.",
     keyActivities: [
       "Audiensi dengan Duta Besar RI atau Atase Pendidikan & Kebudayaan.",
-      "Diskusi: “Tantangan Diplomasi Indonesia di Asia Timur”.",
+      "Diskusi: Tantangan Diplomasi Indonesia di Asia Timur.",
       "Networking dan diskusi jalur karir global dengan staf diplomatik.",
     ],
   },
@@ -37,6 +43,8 @@ export const activities: ActivityDay[] = [
     title: "Art & Cultural Resonance",
     date: "Selasa, 21 April 2026",
     location: "Tokyo University of the Arts (Geidai) & Ueno Park",
+    image: "/images/tokyo-geidai.jpg",
+    imageAlt: "Tokyo University of the Arts",
     focus: "Diplomasi seni dan budaya.",
     keyActivities: [
       "Penampilan paduan suara lagu daerah oleh peserta RK di lingkungan kampus seni tertua di Jepang.",
@@ -48,6 +56,8 @@ export const activities: ActivityDay[] = [
     title: "Innovation & Culinary Diplomacy",
     date: "Rabu, 22 April 2026",
     location: "Tokyo Tech / University of Tokyo (Todai)",
+    image: "/images/tokyo-todai.jpg",
+    imageAlt: "Tokyo Tech dan University of Tokyo",
     focus: "Sains, teknologi, pertukaran budaya kuliner, dan showcase proyek sosial.",
     keyActivities: [
       "Innovation Exhibition: pameran mini karya/proyek sosial di hadapan PPI (Tokyo Tech).",

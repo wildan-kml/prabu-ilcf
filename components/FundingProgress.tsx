@@ -8,79 +8,53 @@ export default function FundingProgress() {
   const target = FUNDING_TARGET;
   const pct = Math.min(100, Math.round((raised / target) * 100));
   const remaining = Math.max(0, target - raised);
+  const denom = Math.max(target, raised, 1);
   const segments = [
     { label: "Terkumpul", value: raised, tone: "from-sky-400 to-blue-500" },
     { label: "Sisa", value: remaining, tone: "from-pink-400 to-purple-500" },
   ];
 
   return (
-    <section className="card p-6 md:p-8 border border-white/10 space-y-5">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div>
-          <div className="glow-pill">Fundraising Progress</div>
-          <h2
-            className="mt-3 text-3xl md:text-4xl font-extrabold text-white"
-            style={{ fontFamily: "'Bebas Neue', 'Manrope', sans-serif", letterSpacing: "0.04em" }}
-          >
-            Progress Dana Terkumpul
-          </h2>
-          <p className="mt-2 text-sm md:text-base text-slate-100/75 leading-relaxed">
-            Target <b className="text-white">{idr(target)}</b> • Terkumpul <b className="text-white">{idr(raised)}</b>{" "}
-            • Sisa <b className="text-white">{idr(remaining)}</b>
-          </p>
+    <section className="card border border-white/10">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-6 md:p-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="space-y-2">
+            <div className="glow-pill">Fundraising Progress</div>
+            <h2
+              className="text-3xl md:text-4xl font-extrabold text-white"
+              style={{ fontFamily: "'Bebas Neue', 'Manrope', sans-serif", letterSpacing: "0.04em" }}
+            >
+              Progress Dana Terkumpul
+            </h2>
+          </div>
         </div>
 
-        <div className="md:text-right">
-          <div className="text-xs uppercase tracking-[0.2em] text-slate-100/70">Tercapai</div>
-          <div className="text-4xl md:text-5xl font-black text-sky-300 drop-shadow-lg">{pct}%</div>
-          <div className="text-sm text-slate-100/70">Menuju target {idr(target)}</div>
-        </div>
-      </div>
-
-      <div className="grid gap-3 md:grid-cols-2 items-center">
         <div className="space-y-2">
-          <div className="progress-shell h-4">
-            <div className="progress-fill" style={{ width: `${pct}%` }} />
+          <div className="flex items-center justify-between text-xs text-slate-100/75 uppercase tracking-[0.14em]">
+            <span>Progress Fundraising</span>
+            <span className="text-white font-semibold">{pct}%</span>
+          </div>
+          <div className="relative h-5 overflow-hidden rounded-full border border-white/15 bg-white/5 shadow-inner shadow-blue-900/30">
+            <div className="flex h-full w-full">
+              {segments.map((seg) => {
+                const w = Math.max(6, Math.round((seg.value / denom) * 100));
+                return (
+                  <div
+                    key={seg.label}
+                    className={`relative h-full bg-gradient-to-r ${seg.tone}`}
+                    style={{ width: `${w}%` }}
+                  >
+                    <span className="absolute inset-0 flex items-center justify-center px-2 text-[11px] font-semibold text-slate-900/85 drop-shadow-sm">
+                      {seg.label} {w}%
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="text-xs text-slate-100/70">
             {idr(raised)} dari {idr(target)}
           </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2">
-          {segments.map((seg) => {
-            const w = Math.max(8, Math.min(100, Math.round((seg.value / target) * 100)));
-            return (
-              <div key={seg.label} className="stat-card">
-                <div className="flex items-center justify-between text-xs text-slate-100/70">
-                  <span>{seg.label}</span>
-                  <span className="text-white font-semibold">{w}%</span>
-                </div>
-                <div className="mt-2 h-2.5 rounded-full bg-white/10 overflow-hidden">
-                  <div
-                    className={`h-full w-[${w}%] rounded-full bg-gradient-to-r ${seg.tone}`}
-                    style={{ width: `${w}%` }}
-                  />
-                </div>
-                <div className="mt-1 text-sm text-white font-semibold">{idr(seg.value)}</div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="grid gap-3 md:grid-cols-3 text-sm text-slate-100/85">
-        <div className="stat-card">
-          <div className="eyebrow text-[0.72rem]">Terkumpul</div>
-          <div className="mt-1 text-lg font-semibold text-white">{idr(raised)}</div>
-        </div>
-        <div className="stat-card">
-          <div className="eyebrow text-[0.72rem]">Target</div>
-          <div className="mt-1 text-lg font-semibold text-white">{idr(target)}</div>
-        </div>
-        <div className="stat-card">
-          <div className="eyebrow text-[0.72rem]">Sisa</div>
-          <div className="mt-1 text-lg font-semibold text-white">{idr(remaining)}</div>
         </div>
       </div>
     </section>

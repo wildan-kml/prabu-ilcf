@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Kaushan+Script&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -219,13 +219,15 @@ a:hover { color: white; text-decoration: none; }
 .icon-chip{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
+  gap: 12px;
+  padding: 12px 18px;
   border-radius: 14px;
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.28), rgba(96, 165, 250, 0.25));
   border: 1px solid rgba(255,255,255,0.28);
   color: #fdfbff;
   font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .fade-up{

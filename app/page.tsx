@@ -16,7 +16,7 @@ const Icon = ({ path }: { path: string }) => (
   <svg
     aria-hidden="true"
     focusable="false"
-    className="h-4 w-4"
+    className="h-5 w-5 text-white"
     viewBox="0 0 24 24"
     fill="currentColor"
     stroke="currentColor"
@@ -56,7 +56,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="section-stack pt-28 md:pt-32">
+    <div className="section-stack pt-32 md:pt-36">
       <section
         id="top"
         className="hero-shell mt-4 md:mt-6 fade-up"
@@ -68,13 +68,13 @@ export default function HomePage() {
         }}
       >
         <div className="hero-overlay" />
-        <div className="hero-content px-6 py-14 md:py-18 md:px-12 space-y-6">
+        <div className="hero-content px-6 py-16 md:py-20 md:px-12 space-y-6">
           <div className="glow-pill text-sm">International Leadership and Cultural Festival — Batch 2</div>
 
           <div className="space-y-2">
             <h1
-              className="text-[40px] md:text-6xl leading-tight font-extrabold text-white drop-shadow-lg"
-              style={{ fontFamily: "'Bebas Neue', 'Plus Jakarta Sans', sans-serif", letterSpacing: "0.06em" }}
+              className="text-[48px] md:text-[70px] leading-tight font-extrabold text-white drop-shadow-lg"
+              style={{ fontFamily: "'Kaushan Script', 'Bebas Neue', 'Plus Jakarta Sans', sans-serif", letterSpacing: "0.05em" }}
             >
               Proposal Kegiatan
               <br />
@@ -90,15 +90,6 @@ export default function HomePage() {
               Lihat Rangkaian Kegiatan
             </a>
           </div>
-
-          <div className="flex flex-wrap gap-2 pt-1">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="icon-chip text-xs md:text-sm">
-                <Icon path={icons.info} />
-                {item.label}
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -107,24 +98,23 @@ export default function HomePage() {
           <div className="space-y-4 max-w-3xl">
             <div className="flex items-center gap-3">
               <div>
-                <div className="icon-chip">
-                  <Icon path={icons.info} /> Tentang Program
-                </div>
-                <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Latar Belakang</h2>
-              </div>
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
+              <Icon path={icons.info} /> Tentang Program
             </div>
+            <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Latar Belakang</h2>
+          </div>
+        </div>
             <div className="space-y-3 text-slate-100/90 leading-relaxed">
               {background.paragraphs.map((p, idx) => (
                 <p key={idx}>{p}</p>
               ))}
             </div>
           </div>
-          <div className="stat-card min-w-[260px] max-w-sm space-y-2">
-            <div className="eyebrow">Tema</div>
-            <div className="text-xl font-semibold text-white">PRABU WORLD&apos;S X-PEDITION</div>
-            <div className="text-sm text-slate-100/80">International Leadership and Cultural Festival Batch 2</div>
-            <div className="subtle-divider" />
-            <div className="text-sm text-slate-100/75">
+          <div className="min-w-[260px] max-w-sm space-y-2 rounded-2xl bg-white text-slate-900 p-5 shadow-lg">
+            <div className="text-xs font-semibold tracking-[0.08em] text-slate-500 uppercase">Tema</div>
+            <div className="text-xl font-bold">PRABU WORLD&apos;S X-PEDITION</div>
+            <div className="text-sm text-slate-700">International Leadership and Cultural Festival Batch 2</div>
+            <div className="text-sm text-slate-700 leading-relaxed">
               Fokus pada diplomasi budaya, jejaring akademik, dan penguatan kepemimpinan muda Indonesia.
             </div>
           </div>
@@ -134,7 +124,7 @@ export default function HomePage() {
       <section id="goals" className="section-card fade-up space-y-5">
         <div className="flex items-center gap-3">
           <div>
-            <div className="icon-chip">
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
               <Icon path={icons.target} /> Tujuan
             </div>
             <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Apa yang ingin dicapai?</h2>
@@ -158,7 +148,7 @@ export default function HomePage() {
       <section id="activities" className="section-card fade-up space-y-5">
         <div className="flex items-center gap-3">
           <div>
-            <div className="icon-chip">
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
               <Icon path={icons.calendar} /> Rangkaian Kegiatan
             </div>
             <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Agenda Harian</h2>
@@ -167,27 +157,49 @@ export default function HomePage() {
         <div className="grid gap-4 md:grid-cols-2">
           {activities.map((day) => (
             <div key={day.dayLabel} className="stat-card h-full space-y-3">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <div className="eyebrow">{day.dayLabel}</div>
-                  <div className="text-xl font-bold text-white">{day.title}</div>
-                  <div className="text-sm text-slate-100/70">{day.date}</div>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/12 px-5 py-3 text-sm md:text-base font-bold uppercase tracking-[0.14em] text-white">
+                  <span>{day.dayLabel}</span>
                 </div>
-                <div className="rounded-full px-3 py-1 text-xs bg-white/15 border border-white/20 text-white text-right">
+                <div className="rounded-full px-5 py-3 text-sm md:text-base bg-white/12 border border-white/25 text-white text-right">
                   {day.location}
                 </div>
               </div>
-              <div className="text-sm text-slate-100/80 leading-relaxed">
-                <span className="font-semibold text-white">Fokus: </span>
-                {day.focus}
-              </div>
-              <div className="space-y-1">
-                {day.keyActivities.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-sm text-slate-100/85">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-300 flex-shrink-0" />
-                    <span>{item}</span>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-[320px_1fr] md:items-start md:gap-6">
+                <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-inner w-full md:h-full">
+                  {day.image ? (
+                    <div
+                      className="aspect-[4/3] w-full bg-cover bg-center md:h-full md:aspect-auto"
+                      style={{ backgroundImage: `url(${day.image})` }}
+                      role="img"
+                      aria-label={day.imageAlt || day.title}
+                    />
+                  ) : (
+                    <div className="aspect-[4/3] w-full bg-gradient-to-br from-white/10 via-white/6 to-transparent grid place-items-center text-xs md:text-sm text-slate-100/80">
+                      Foto lokasi akan ditambahkan
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <div className="space-y-1">
+                    <div className="text-xl font-bold text-white">{day.title}</div>
+                    <div className="text-sm md:text-base text-slate-100/75">{day.date}</div>
                   </div>
-                ))}
+                  <div className="text-sm text-slate-100/80 leading-relaxed">
+                    <span className="font-semibold text-white">Fokus: </span>
+                    {day.focus}
+                  </div>
+                  <div className="space-y-1">
+                    {day.keyActivities.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-sm text-slate-100/85">
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-300 flex-shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -197,8 +209,8 @@ export default function HomePage() {
       <section id="awardees" className="section-card fade-up space-y-5">
         <div className="flex items-center gap-3">
           <div>
-            <div className="icon-chip">
-              <Icon path={icons.star} /> Profile Awardee
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
+              <Icon path={icons.star} /> Profil Awardee
             </div>
             <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Para Delegasi</h2>
           </div>
@@ -227,7 +239,7 @@ export default function HomePage() {
       <section id="budget" className="section-card fade-up space-y-5">
         <div className="flex items-center gap-3">
           <div>
-            <div className="icon-chip">
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
               <Icon path={icons.money} /> Rancangan Anggaran
             </div>
             <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Ringkasan Anggaran Biaya</h2>
@@ -264,9 +276,9 @@ export default function HomePage() {
       </section>
 
       <section id="contact" className="section-card fade-up space-y-4">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3 text-center">
           <div>
-            <div className="icon-chip">
+            <div className="icon-chip text-base md:text-lg whitespace-nowrap">
               <Icon path={icons.phone} /> Kontak & Alamat
             </div>
             <h2 className="title-slab text-3xl md:text-[42px] font-extrabold text-white mt-2">Hubungi Kami</h2>
